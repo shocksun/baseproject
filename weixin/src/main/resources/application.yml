@@ -1,0 +1,11 @@
+server:
+  port: 8081
+wxprops: 
+  appid: wx0c374e55a8f51dcf
+  appsecret: 8e5a9e02b7ad4fdabc21fd53bc147e96
+  token: shock
+  encodingaeskey: bCzLyIcpVr6IOb73Lxd6vaXYrR56DflhNb7js2SXDmU
+  debug: true
+wxrequest: 
+  token: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={appid}&secret={appsecret}
+  batchgetMaterial: https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token={accessToken}

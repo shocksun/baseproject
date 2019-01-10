@@ -1,0 +1,14 @@
+{
+    "properties": [
+        {
+            "name": "wxprops",
+            "type": "org.shock.weixin.CommonConstant",
+            "description": "微信常量"
+        },
+        {
+            "name": "wxrequest",
+            "type": "org.shock.weixin.request.WeixinRequest",
+            "description": "微信请求链接"
+        }
+    ]
+}
