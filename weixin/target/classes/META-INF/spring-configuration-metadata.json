@@ -1,17 +1,47 @@
 {
   "groups": [
     {
+      "name": "weixinapi",
+      "type": "org.shock.weixin.request.WeixinApi",
+      "sourceType": "org.shock.weixin.request.WeixinApi"
+    },
+    {
       "name": "wxprops",
       "type": "org.shock.weixin.CommonConstant",
       "sourceType": "org.shock.weixin.CommonConstant"
-    },
-    {
-      "name": "wxrequest",
-      "type": "org.shock.weixin.request.WeixinRequest",
-      "sourceType": "org.shock.weixin.request.WeixinRequest"
     }
   ],
   "properties": [
+    {
+      "name": "access-token",
+      "type": "java.lang.String",
+      "description": "A description for 'access-token'"
+    },
+    {
+      "name": "ticket",
+      "type": "java.lang.String",
+      "description": "A description for 'ticket'"
+    },
+    {
+      "name": "weixinapi",
+      "type": "org.shock.weixin.request.WeixinApi",
+      "description": "΢��API"
+    },
+    {
+      "name": "weixinapi.access-token",
+      "type": "org.shock.weixin.request.api.AccessToken",
+      "sourceType": "org.shock.weixin.request.WeixinApi"
+    },
+    {
+      "name": "weixinapi.material",
+      "type": "org.shock.weixin.request.api.Material",
+      "sourceType": "org.shock.weixin.request.WeixinApi"
+    },
+    {
+      "name": "weixinapi.menu",
+      "type": "org.shock.weixin.request.api.Menu",
+      "sourceType": "org.shock.weixin.request.WeixinApi"
+    },
     {
       "name": "wxprops",
       "type": "org.shock.weixin.CommonConstant",
@@ -46,38 +76,6 @@
       "name": "wxprops.token",
       "type": "java.lang.String",
       "sourceType": "org.shock.weixin.CommonConstant"
-    },
-    {
-      "name": "wxrequest",
-      "type": "org.shock.weixin.request.WeixinRequest",
-      "description": "΢����������"
-    },
-    {
-      "name": "wxrequest.access-token",
-      "type": "java.lang.String",
-      "sourceType": "org.shock.weixin.request.WeixinRequest"
-    },
-    {
-      "name": "wxrequest.batchget-material",
-      "type": "java.lang.String",
-      "description": "获取素材列表",
-      "sourceType": "org.shock.weixin.request.WeixinRequest"
-    },
-    {
-      "name": "wxrequest.common-constant",
-      "type": "org.shock.weixin.CommonConstant",
-      "sourceType": "org.shock.weixin.request.WeixinRequest"
-    },
-    {
-      "name": "wxrequest.rest-template",
-      "type": "org.springframework.web.client.RestTemplate",
-      "sourceType": "org.shock.weixin.request.WeixinRequest"
-    },
-    {
-      "name": "wxrequest.token",
-      "type": "java.lang.String",
-      "description": "获取access_token",
-      "sourceType": "org.shock.weixin.request.WeixinRequest"
     }
   ],
   "hints": []

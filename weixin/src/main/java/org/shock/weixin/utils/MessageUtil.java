@@ -35,6 +35,7 @@ public class MessageUtil {
 				doc=DocumentHelper.parseText(xml);
 				ele = doc.getRootElement();
 			}
+			System.out.println(ele.asXML());
 			String type=ele.elementText("MsgType");
 			FMessage message=getMessage(type,ele.elementText("Event"));
 			Class<?> clazz = message.getClass();

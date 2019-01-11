@@ -1,14 +1,22 @@
-{
-    "properties": [
-        {
-            "name": "wxprops",
-            "type": "org.shock.weixin.CommonConstant",
-            "description": "Î¢ÐÅ³£Á¿"
-        },
-        {
-            "name": "wxrequest",
-            "type": "org.shock.weixin.request.WeixinRequest",
-            "description": "Î¢ÐÅÇëÇóÁ´½Ó"
-        }
-    ]
-}
+{"properties": [
+  {
+    "name": "wxprops",
+    "type": "org.shock.weixin.CommonConstant",
+    "description": "Î¢ï¿½Å³ï¿½ï¿½ï¿½"
+  },
+  {
+    "name": "weixinapi",
+    "type": "org.shock.weixin.request.WeixinApi",
+    "description": "Î¢ï¿½ï¿½API"
+  },
+  {
+    "name": "access-token",
+    "type": "java.lang.String",
+    "description": "A description for 'access-token'"
+  },
+  {
+    "name": "ticket",
+    "type": "java.lang.String",
+    "description": "A description for 'ticket'"
+  }
+]}

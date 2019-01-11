@@ -58,7 +58,7 @@ public class WeixinController {
 		TextTMessage textMessage = new TextTMessage();
 		textMessage.setFromUserName(message.getToUserName());
 		textMessage.setToUserName(message.getFromUserName());
-		textMessage.setContent("异常数据");
+		textMessage.setContent("数据");
 		return textMessage.toMessage();
 	}
 }
