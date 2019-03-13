@@ -13,21 +13,6 @@
   ],
   "properties": [
     {
-      "name": "access-token",
-      "type": "java.lang.String",
-      "description": "A description for 'access-token'"
-    },
-    {
-      "name": "ticket",
-      "type": "java.lang.String",
-      "description": "A description for 'ticket'"
-    },
-    {
-      "name": "weixinapi",
-      "type": "org.shock.weixin.request.WeixinApi",
-      "description": "΢��API"
-    },
-    {
       "name": "weixinapi.access-token",
       "type": "org.shock.weixin.request.api.AccessToken",
       "sourceType": "org.shock.weixin.request.WeixinApi"
@@ -41,11 +26,6 @@
       "name": "weixinapi.menu",
       "type": "org.shock.weixin.request.api.Menu",
       "sourceType": "org.shock.weixin.request.WeixinApi"
-    },
-    {
-      "name": "wxprops",
-      "type": "org.shock.weixin.CommonConstant",
-      "description": "΢�ų���"
     },
     {
       "name": "wxprops.appid",

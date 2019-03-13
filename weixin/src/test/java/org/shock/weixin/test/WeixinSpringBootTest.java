@@ -1,8 +1,8 @@
 package org.shock.weixin.test;
 
-import static org.junit.Assert.assertNull;
-
+import java.io.FileOutputStream;
 import java.util.Map;
+import java.util.Properties;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -46,7 +46,7 @@ public class WeixinSpringBootTest {
 	@Test
 	public void testName() throws Exception {
 		Button button = new Button();
-		ViewButton viewButton = new ViewButton("打开页面", "https://ff8c9bef.ngrok.io/weixintest/index.html");
+		ViewButton viewButton = new ViewButton("测试缓存2", "http://shocksun.51vip.biz/weixin/weix/list.html");
 		button.addButton(viewButton);
 		System.out.println(JSONObject.fromObject(button));
 		Map result = weixinRequest.createMenu(button);
@@ -57,11 +57,5 @@ public class WeixinSpringBootTest {
 		Map result = weixinRequest.getJsapiTicket();
 		System.out.println(result);
 	}
-	@Test
-	public void createSignature() {
-		String noncestr = CheckUtil.getNoncestr(16);
-		String jsapi_ticket = weixinRequest.getTicket();
-		String timestamp = System.currentTimeMillis()+"";
-		String url = "";
-	}
+	
 }

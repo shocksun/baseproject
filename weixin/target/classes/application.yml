@@ -1,14 +1,14 @@
 server:
-  port: 8080
-accessToken: 17_AA0I-nkhObLnDkdql5P6y9gMXt7S5TR7bkhntm3DdYGLFNcJy-c_L_dVLrXYX_RNRLguCrieJ8ifolMuduh1-3y8-gzyhM0uxfOrbQY0zWq4psip__6Mx_s3CukDIPZHjl8IWW5MwJd7bc9lIFUhAAAROD
-ticket: kgt8ON7yVITDhtdwci0qeSZMCLVlsRhEaFyP6ODZ3vey9iMhb-4Diy3O7Bxj6JVcBE2xG1UgfAjWkDs6dEql4Q
+  port: 8081
+accessToken: 18_Raf9oU3Hx3xdBs11g0zqe_onB3uDsFftK_CRRbpbw7Aankq91_v_GRX0wHiVcWAXdBEgRYeujy2rGti-EB1l1pZRXMh6_DEvVVi91GvVI5McrzChHomhIEs6q0yg1_JQWczUg66_Ny5WWUJGWSThAHAZVW
+ticket: LIKLckvwlJT9cWIhEQTwfBRdFtoTvF57I8YXxc_D7bilMDpQpfwmjy4gHu3-X9V1AHAf9kJzlOM_Bx-LoMpHyA
 wxprops: 
 #正式
 #  appid: wx0c374e55a8f51dcf
 #  appsecret: 8e5a9e02b7ad4fdabc21fd53bc147e96
 #测试
-  appid: wx71a19faba8728ae8
-  appsecret: c3197e522327a7745066df225ba37d3b
+  appid: wx414c92f266bf8411
+  appsecret: 8f66bf583824bb7c65355de4bd0bfecb
   token: shock
   encodingaeskey: bCzLyIcpVr6IOb73Lxd6vaXYrR56DflhNb7js2SXDmU
   debug: true

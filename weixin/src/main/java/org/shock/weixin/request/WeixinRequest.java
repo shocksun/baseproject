@@ -1,6 +1,5 @@
 package org.shock.weixin.request;
 
-import java.nio.charset.Charset;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
@@ -8,7 +7,6 @@ import org.shock.weixin.CommonConstant;
 import org.shock.weixin.button.Button;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 

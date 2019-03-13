@@ -17,6 +17,13 @@
 	</properties>
 	<repositories>
 		<repository>
+			<id>aliyun</id>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+		</repository>
+		<repository>
 			<id>mavencentral</id>
 			<releases>
 				<enabled>true</enabled>
@@ -132,5 +139,7 @@
 
 
 		<module>weixin</module>
+		<module>webrequest</module>
+		
 	</modules>
 </project>
