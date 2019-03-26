@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
 Built-By: Admin
 Build-Jdk: 10.0.1
+Implementation-Title: webrequest
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: org.shock
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/baseproject/webrequest
 Created-By: Maven Integration for Eclipse
 

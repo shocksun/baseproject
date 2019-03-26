@@ -14,7 +14,7 @@ public class WebTestController {
 	
 	@RequestMapping("arrtest")
 	@ResponseBody
-	public String arrtest(@RequestParam("list[]") List<String> list) {
+	public String arrtest(String list) {
 		System.out.println(list);
 		return "";
 	}

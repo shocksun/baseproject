@@ -20,3 +20,16 @@ weixinapi:
     create: https://api.weixin.qq.com/cgi-bin/menu/create?access_token={accessToken}
   material:
     batchget-material: https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token={accessToken}
+spring:
+  redis:
+    host: 192.168.109.128
+    port: 6379
+    password: 123456
+    timeout: 1000
+    database: 0
+    jedis:
+      pool:
+        max-active: 10
+        max-idle: 8
+        min-idle: 2
+        max-wait: 100

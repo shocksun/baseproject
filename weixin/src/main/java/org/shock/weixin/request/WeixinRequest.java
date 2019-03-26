@@ -1,12 +1,18 @@
 package org.shock.weixin.request;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.shock.weixin.CommonConstant;
 import org.shock.weixin.button.Button;
+import org.shock.weixin.utils.RedisUtils;
+import org.shock.weixin.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,10 +28,12 @@ public class WeixinRequest {
 	private CommonConstant commonConstant;
 	@Autowired
 	private WeixinApi weixinApi;
+	@Autowired
+	private RedisUtils redisUtils;
 	
-	@Value(value="${accessToken}")
+//	@Value(value="${accessToken}")
 	private String accessToken;
-	@Value(value="${ticket}")
+//	@Value(value="${ticket}")
 	private String ticket;
 	public String getAccessToken() {
 		return accessToken;
@@ -33,18 +41,44 @@ public class WeixinRequest {
 	public String getTicket() {
 		return ticket;
 	}
+	private String getRedisTimeValue(String key) {
+		String value = redisUtils.getString(key);
+		if(value!=null) {
+			Date date = (Date) redisUtils.getObject(key+"_time");
+			if(date!=null) {
+				if(date.getTime()<new Date().getTime()) {
+					redisUtils.delete(key);
+				}else {
+					return value;
+				}
+			}else {
+				redisUtils.delete(key);
+			}
+		}
+		return null;
+	}
+	private void setRedisTimeValue(String key,String value,int time) {
+		redisUtils.setValue(key,value);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(new Date());
+		calendar.add(Calendar.SECOND,time);
+		redisUtils.setValue(key+"_time",calendar.getTime());
+	}
 	public void initAccessToken() {
-		if(StringUtils.isEmpty(accessToken)) {
+		accessToken = getRedisTimeValue("accessToken");
+		if(StringUtils.isEmpty(accessToken)) {//判断accessToken是否存在,如果不存在就获取
 			Map<String, String> params = Maps.newHashMap();
 			params.put("appid", commonConstant.getAppid());
 			params.put("appsecret", commonConstant.getAppsecret());
-			Map<String,Object> result = restTemplate.getForObject(weixinApi.getAccessToken().getToken(), Map.class,params);
+			Map result = restTemplate.getForObject(weixinApi.getAccessToken().getToken(), Map.class,params);
 			if(result.containsKey("errcode")) {
 				System.err.println(result.get("errmsg"));
+			}else {
+				accessToken = (String)result.get("access_token");
+				int time = (int) result.get("expires_in");
+				setRedisTimeValue("accessToken", accessToken, time);
 			}
-			accessToken = (String)result.get("access_token");
 		}
-		System.out.println(accessToken);
 	}
 	/**
 	 * @param type 素材的类型，图片（image）、视频（video）、语音 （voice）、图文（news）
@@ -59,22 +93,29 @@ public class WeixinRequest {
 		data.put("type", type);
 		data.put("offset", offset);
 		data.put("count", count);
-		String result = restTemplate.postForObject(weixinApi.getMaterial().getBatchgetMaterial(),data.toString(),String.class,params);
-		JSONObject json = JSONObject.fromObject(result);
-		return json;
+		Map result = restTemplate.postForObject(weixinApi.getMaterial().getBatchgetMaterial(),data.toString(),Map.class,params);
+		return result;
 	}
 	public Map createMenu(Button button) {
 		Map<String, String> params = Maps.newHashMap();
 		params.put("accessToken", accessToken);
-		String result = restTemplate.postForObject(weixinApi.getMenu().getCreate(),JSONObject.fromObject(button).toString(),String.class,params);
-		JSONObject json = JSONObject.fromObject(result);
-		return json;
+		Map result = restTemplate.postForObject(weixinApi.getMenu().getCreate(),JSONObject.fromObject(button).toString(),Map.class,params);
+		return result;
 	}
-	public Map getJsapiTicket() {
-		Map<String, String> params = Maps.newHashMap();
-		params.put("accessToken", accessToken);
-		String result = restTemplate.getForObject(weixinApi.getAccessToken().getJsapiTicket(),String.class,params);
-		JSONObject json = JSONObject.fromObject(result);
-		return json;
+	public void initJsapiTicket() {
+		ticket = getRedisTimeValue("ticket");
+		if(StringUtils.isEmpty(ticket)&&accessToken!=null) {
+			Map<String, String> params = Maps.newHashMap();
+			params.put("accessToken", accessToken);
+			Map result = restTemplate.getForObject(weixinApi.getAccessToken().getJsapiTicket(),Map.class,params);
+			if(result.get("errcode").equals(0)) {
+				ticket = (String)result.get("ticket");
+				int time = (int) result.get("expires_in");
+				setRedisTimeValue("ticket", ticket, time);
+			}else {
+				System.err.println(result.get("errmsg"));
+			}
+		}
+		
 	}
 }
