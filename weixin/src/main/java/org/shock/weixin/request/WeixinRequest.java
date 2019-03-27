@@ -8,11 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import org.shock.weixin.CommonConstant;
 import org.shock.weixin.button.Button;
 import org.shock.weixin.utils.RedisUtils;
-import org.shock.weixin.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -31,9 +27,7 @@ public class WeixinRequest {
 	@Autowired
 	private RedisUtils redisUtils;
 	
-//	@Value(value="${accessToken}")
 	private String accessToken;
-//	@Value(value="${ticket}")
 	private String ticket;
 	public String getAccessToken() {
 		return accessToken;
@@ -93,14 +87,14 @@ public class WeixinRequest {
 		data.put("type", type);
 		data.put("offset", offset);
 		data.put("count", count);
-		Map result = restTemplate.postForObject(weixinApi.getMaterial().getBatchgetMaterial(),data.toString(),Map.class,params);
-		return result;
+		String result = restTemplate.postForObject(weixinApi.getMaterial().getBatchgetMaterial(),data.toString(),String.class,params);
+		return JSONObject.fromObject(result);
 	}
 	public Map createMenu(Button button) {
 		Map<String, String> params = Maps.newHashMap();
 		params.put("accessToken", accessToken);
-		Map result = restTemplate.postForObject(weixinApi.getMenu().getCreate(),JSONObject.fromObject(button).toString(),Map.class,params);
-		return result;
+		String result = restTemplate.postForObject(weixinApi.getMenu().getCreate(),JSONObject.fromObject(button).toString(),String.class,params);
+		return JSONObject.fromObject(result);
 	}
 	public void initJsapiTicket() {
 		ticket = getRedisTimeValue("ticket");

@@ -34,4 +34,5 @@ public class ConfigurationBean {
 		redisTemplate.setValueSerializer(new RedisObjectSerializer());
 		return redisTemplate;
 	}
+	
 }

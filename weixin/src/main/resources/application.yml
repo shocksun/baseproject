@@ -1,11 +1,9 @@
 server:
-  port: 8081
-accessToken: 18_Raf9oU3Hx3xdBs11g0zqe_onB3uDsFftK_CRRbpbw7Aankq91_v_GRX0wHiVcWAXdBEgRYeujy2rGti-EB1l1pZRXMh6_DEvVVi91GvVI5McrzChHomhIEs6q0yg1_JQWczUg66_Ny5WWUJGWSThAHAZVW
-ticket: LIKLckvwlJT9cWIhEQTwfBRdFtoTvF57I8YXxc_D7bilMDpQpfwmjy4gHu3-X9V1AHAf9kJzlOM_Bx-LoMpHyA
+  port: 8080
 wxprops: 
 #正式
 #  appid: wx0c374e55a8f51dcf
-#  appsecret: 8e5a9e02b7ad4fdabc21fd53bc147e96
+#  appsecret: e2abf67dc2b94c659aeb53006e640e2e
 #测试
   appid: wx414c92f266bf8411
   appsecret: 8f66bf583824bb7c65355de4bd0bfecb
@@ -13,6 +11,8 @@ wxprops:
   encodingaeskey: bCzLyIcpVr6IOb73Lxd6vaXYrR56DflhNb7js2SXDmU
   debug: true
 weixinapi:
+  oauth2:
+    authorize: https://open.weixin.qq.com/connect/oauth2/authorize?appid={appid}&redirect_uri={redirectUri}&response_type=code&scope={scope}&state={state}#wechat_redirect
   access-token:
     token: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={appid}&secret={appsecret}
     jsapi-ticket: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token={accessToken}&type=jsapi

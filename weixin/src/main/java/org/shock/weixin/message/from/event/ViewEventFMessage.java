@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public class ViewEventFMessage extends EventFMessage{
 	private String EventKey;
+	private String MenuId;
 
 	@Override
 	public String toString() {
